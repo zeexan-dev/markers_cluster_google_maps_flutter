@@ -1,4 +1,5 @@
 library markers_cluster_google_maps_flutter;
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' as math;
@@ -10,18 +11,25 @@ class MarkersClusterManager {
   final Map<double, double> zoomLevelRadius;
   List<Marker> _markers = [];
   List<Marker> _clusteredMarkers = [];
+
   /// Callback function for marker tap events.
   Function(LatLng)? onMarkerTap;
+
   /// Color of the cluster markers.
   final Color clusterColor;
+
   /// Text style for the cluster marker text.
   final TextStyle clusterTextStyle;
+
   /// Shape of the cluster markers.
   final ShapeBorder clusterShape;
+
   /// Thickness of the cluster marker border.
   final double clusterBorderThickness;
+
   /// Color of the cluster marker border.
   final Color clusterBorderColor;
+
   /// Opacity of the cluster markers.
   final double clusterOpacity;
 
@@ -61,7 +69,7 @@ class MarkersClusterManager {
 
   /// Updates the clusters based on the current [zoomLevel].
   Future<void> updateClusters({required double zoomLevel}) async {
-     // Ensure the zoom level does not go below the minimum threshold
+    // Ensure the zoom level does not go below the minimum threshold
     if (zoomLevel < _minZoomLevel) {
       zoomLevel = _minZoomLevel;
     }
@@ -168,7 +176,7 @@ class MarkersClusterManager {
       Rect.fromCircle(center: Offset(size / 2, size / 2), radius: size / 2),
     );
     canvas.drawPath(shape, paint);
-    
+
     if (clusterBorderThickness > 0) {
       if (clusterShape is CircleBorder) {
         canvas.drawCircle(Offset(size / 2, size / 2),

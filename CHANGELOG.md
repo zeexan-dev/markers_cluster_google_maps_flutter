@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Basic Example added.
+
 ## 0.0.4
 
 * Documentation update.

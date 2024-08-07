@@ -101,7 +101,6 @@ void main() {
 
     // Verify that the clustered markers are as expected
     final clusteredMarkers = clusterManager.getClusteredMarkers();
-    expect(
-        clusteredMarkers.length, 40); 
+    expect(clusteredMarkers.length, 40);
   });
 }
