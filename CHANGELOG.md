@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Basic example updated.
+
 ## 0.0.2
 
 * Basic example added.

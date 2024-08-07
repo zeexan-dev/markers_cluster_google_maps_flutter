@@ -60,19 +60,22 @@ class MarkersClusterExampleBasic extends StatefulWidget {
 }
 
 class _MarkersClusterExampleBasicState extends State<MarkersClusterExampleBasic> {
-  final Completer<GoogleMapController> _mapController =
-      Completer<GoogleMapController>();
+  // Completer to hold the GoogleMapController
+  final Completer<GoogleMapController> _mapController = Completer<GoogleMapController>();
+  // Instance of the custom MarkersClusterManager
   late MarkersClusterManager _clusterManager;
+  // Initial zoom level of the map
   double _currentZoom = 5.0;
 
   @override
   void initState() {
     super.initState();
+    // Initialize the cluster manager with custom settings
     _clusterManager = MarkersClusterManager(
       clusterColor: Colors.blue,
-      clusterBorderThickness: 10.0, // Specify border thickness
+      clusterBorderThickness: 10.0,
       clusterBorderColor: Colors.blue[900]!,
-      clusterOpacity: 1.0, // Specify border color
+      clusterOpacity: 1.0, 
       clusterTextStyle: TextStyle(
         fontSize: 40,
         color: Colors.white,
@@ -82,9 +85,11 @@ class _MarkersClusterExampleBasicState extends State<MarkersClusterExampleBasic>
         _handleMarkerTap(position);
       },
     );
+    // Add initial markers to the cluster manager
     _addMarkers();
   }
 
+  // Function to add markers for different cities
   void _addMarkers() {
     // Coordinates for Islamabad
     List<LatLng> islamabadCoordinates = [
@@ -142,6 +147,7 @@ class _MarkersClusterExampleBasicState extends State<MarkersClusterExampleBasic>
       LatLng(34.0195, 71.5651)
     ];
 
+    // Coordinates for Quetta
     List<LatLng> quettaCoordinates = [
       LatLng(30.1798, 66.9750), 
       LatLng(30.1916, 66.9904), 
@@ -194,13 +200,14 @@ class _MarkersClusterExampleBasicState extends State<MarkersClusterExampleBasic>
           position: quettaCoordinates[i],
           infoWindow: InfoWindow(title: 'Quetta Marker $i')));
     }
-
-   
   }
 
+  // Handle marker tap event
   void _handleMarkerTap(LatLng position) async {
-    //  write your code for on marker tap
+    // Add your code for handling marker tap
   }
+
+  // Update clusters based on the current zoom level
   Future<void> _updateClusters() async {
     await _clusterManager.updateClusters(zoomLevel: _currentZoom);
     setState(() {});
@@ -219,15 +226,14 @@ class _MarkersClusterExampleBasicState extends State<MarkersClusterExampleBasic>
             await _updateClusters();
           },
           initialCameraPosition: CameraPosition(
-            target: LatLng(30.3753, 69.3451),
+            target: LatLng(30.3753, 69.3451), 
             zoom: _currentZoom,
           ),
           onCameraMove: (CameraPosition position) async {
             _currentZoom = position.zoom;
-            
-           await _updateClusters();
+            // Update clusters on camera move
+            await _updateClusters();
           },
-         
           myLocationEnabled: true,
           compassEnabled: true,
           myLocationButtonEnabled: false,
