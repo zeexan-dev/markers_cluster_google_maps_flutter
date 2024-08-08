@@ -23,5 +23,7 @@ jobs:
         run: flutter pub get
       # Here you can insert custom steps you need
       # - run: dart tool/generate-code.dart
+      - name: Set PUB_TOKEN environment variable
+        run: echo "//pub.dev/:_authToken=${{ secrets.PUB_CREDENTIALS_JSON }}" > ~/.pub-cache/credentials.json
       - name: Publish
         run: dart pub publish --force
