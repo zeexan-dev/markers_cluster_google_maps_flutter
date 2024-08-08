@@ -1,3 +1,6 @@
+## 0.0.7
+
+* Readme Fix.
 ## 0.0.6
 
 * Minor updates.
