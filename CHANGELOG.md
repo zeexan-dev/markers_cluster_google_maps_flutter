@@ -1,3 +1,6 @@
+## 0.0.6
+
+* Minor updates.
 ## 0.0.5+1
 
 * Readme updated.
