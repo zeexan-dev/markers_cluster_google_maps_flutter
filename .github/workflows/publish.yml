@@ -21,9 +21,17 @@ jobs:
           channel: stable
       - name: Install dependencies
         run: flutter pub get
-      # Here you can insert custom steps you need
-      # - run: dart tool/generate-code.dart
-      - name: Set PUB_TOKEN environment variable
-        run: echo "//pub.dev/:_authToken=${{ secrets.PUB_CREDENTIALS_JSON }}" > ~/.pub-cache/credentials.json
+      - name: Analyze
+        run: flutter analyze
+      - name: Run tests
+        run: flutter test
+      - name: Format code
+        run: dart format --fix .
+      - name: Check Publish Warnings
+        run: dart pub publish --dry-run
       - name: Publish
-        run: dart pub publish --force
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          credentialJson: ${{ secrets.PUB_CREDENTIALS_JSON }}
+          flutter: true
+          skipTests: true
