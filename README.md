@@ -2,6 +2,10 @@
 
 A flutter package for clustering the markers on google maps flutter.
 
+[![Pub](https://img.shields.io/pub/v/markers_cluster_google_maps_flutter.svg)]((https://pub.dev/packages/markers_cluster_google_maps_flutter))
+[![License](https://img.shields.io/badge/licence-BSD3-blue.svg)](https://github.com/sarbagyastha/flutter_rating_bar/blob/master/LICENSE)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/zeexan-dev/markers_cluster_google_maps_flutter.svg)](https://github.com/zeexan-dev/markers_cluster_google_maps_flutter)
+
 ## Installation
 
 To use this plugin, add markers_cluster_google_maps_flutter as a dependency in your pubspec.yaml file.
