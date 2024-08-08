@@ -1,3 +1,6 @@
+## 0.0.5+1
+
+* Readme updated.
 ## 0.0.5
 
 * Basic Example added.
