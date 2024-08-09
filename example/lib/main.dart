@@ -20,19 +20,19 @@ class _MarkersClusterExampleBasicState
   // Instance of the custom MarkersClusterManager
   late MarkersClusterManager _clusterManager;
   // Initial zoom level of the map
-  double _currentZoom = 5.0;
+  double _currentZoom = 5.5;
 
   @override
   void initState() {
     super.initState();
     // Initialize the cluster manager with custom settings
     _clusterManager = MarkersClusterManager(
+      clusterMarkerSize: 35.0,
       clusterColor: Colors.blue,
-      clusterBorderThickness: 10.0,
+      clusterBorderThickness: 4.0,
       clusterBorderColor: Colors.blue[900]!,
       clusterOpacity: 1.0,
-      clusterTextStyle: TextStyle(
-          fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold),
+      clusterTextStyle: TextStyle(fontSize: 15, color: Colors.white),
       onMarkerTap: (LatLng position) {
         _handleMarkerTap(position);
       },
@@ -184,6 +184,7 @@ class _MarkersClusterExampleBasicState
           onCameraMove: (CameraPosition position) async {
             _currentZoom = position.zoom;
             // Update clusters on camera move
+            debugPrint("current zoom: ${_currentZoom}");
             await _updateClusters();
           },
           myLocationEnabled: true,

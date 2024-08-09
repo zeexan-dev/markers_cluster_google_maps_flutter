@@ -53,12 +53,12 @@ class MarkersClusterManager {
     this.onMarkerTap,
     this.clusterColor = Colors.blue,
     this.clusterShape = const CircleBorder(),
-    this.clusterMarkerSize = 50.0,
-    this.clusterBorderThickness = 15,
+    this.clusterMarkerSize = 35.0,
+    this.clusterBorderThickness = 4.0,
     this.clusterBorderColor = Colors.black,
     this.clusterOpacity = 1.0,
     this.clusterTextStyle = const TextStyle(
-      fontSize: 40,
+      fontSize: 15,
       color: Colors.white,
     ),
   }) : zoomLevelRadius = _defaultZoomLevelRadius;
