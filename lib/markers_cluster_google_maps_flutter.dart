@@ -204,8 +204,8 @@ class MarkersClusterManager {
     final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
     final uint8List = byteData!.buffer.asUint8List();
 
-    return BitmapDescriptor.bytes(uint8List);
-    // return BitmapDescriptor.fromBytes(uint8List);
+    // return BitmapDescriptor.bytes(uint8List);
+    return BitmapDescriptor.fromBytes(uint8List);
   }
 
   double _calculateDistance(LatLng pos1, LatLng pos2) {
