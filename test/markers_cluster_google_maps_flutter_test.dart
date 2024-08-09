@@ -96,11 +96,21 @@ void main() {
           infoWindow: InfoWindow(title: 'Peshawar Marker $i')));
     }
 
-    // Update clusters at a specific zoom level
-    await clusterManager.updateClusters(zoomLevel: 15);
+    // Update clusters at different zoom levels
+    await clusterManager.updateClusters(zoomLevel: 15.0);
+    final clusteredMarkersZoom15 = clusterManager.getClusteredMarkers();
+    expect(clusteredMarkersZoom15.length, 40);
 
-    // Verify that the clustered markers are as expected
-    final clusteredMarkers = clusterManager.getClusteredMarkers();
-    expect(clusteredMarkers.length, 40);
+    await clusterManager.updateClusters(zoomLevel: 14.0);
+    final clusteredMarkersZoom10 = clusterManager.getClusteredMarkers();
+    expect(clusteredMarkersZoom10.length, 38);
+
+    await clusterManager.updateClusters(zoomLevel: 4.0);
+    final clusteredMarkersZoom5 = clusterManager.getClusteredMarkers();
+    expect(clusteredMarkersZoom5.length, 4);
+
+    await clusterManager.updateClusters(zoomLevel: 2.9);
+    final clusteredMarkersZoom2p9 = clusterManager.getClusteredMarkers();
+    expect(clusteredMarkersZoom2p9.length, 4);
   });
 }
