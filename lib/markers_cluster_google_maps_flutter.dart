@@ -9,6 +9,7 @@ import 'dart:ui' as ui;
 class MarkersClusterManager {
   /// A map of zoom levels to cluster radii.
   final Map<double, double> zoomLevelRadius;
+
   List<Marker> _markers = [];
   List<Marker> _clusteredMarkers = [];
 
@@ -33,26 +34,26 @@ class MarkersClusterManager {
   /// Opacity of the cluster markers.
   final double clusterOpacity;
 
+  /// cluster marker size
+  final double clusterMarkerSize;
+
   // Default values for zoomLevelRadius
   static Map<double, double> _defaultZoomLevelRadius = {
-    3.0: 20000.0,
-    5.0: 10000.0,
-    8.0: 5000.0,
-    10.0: 2000.0,
-    12.0: 100.0,
+    3.0: 180000.0,
+    5.0: 20000.0,
+    8.0: 10000,
+    10.0: 3000.0,
+    12.0: 1000.0,
     15.0: 0.0,
   };
   static const double _minZoomLevel = 3.0; //  minimum zoom level
 
   /// Creates a [MarkersClusterManager] with optional customization.
-  ///
-  /// The [zoomLevelRadius] parameter can be used to provide custom radius values
-  /// for different zoom levels.
   MarkersClusterManager({
-    Map<double, double>? zoomLevelRadius,
     this.onMarkerTap,
     this.clusterColor = Colors.blue,
     this.clusterShape = const CircleBorder(),
+    this.clusterMarkerSize = 50.0,
     this.clusterBorderThickness = 15,
     this.clusterBorderColor = Colors.black,
     this.clusterOpacity = 1.0,
@@ -60,7 +61,7 @@ class MarkersClusterManager {
       fontSize: 40,
       color: Colors.white,
     ),
-  }) : zoomLevelRadius = zoomLevelRadius ?? _defaultZoomLevelRadius;
+  }) : zoomLevelRadius = _defaultZoomLevelRadius;
 
   /// Adds a [Marker] to the manager.
   void addMarker(Marker marker) {
@@ -169,7 +170,9 @@ class MarkersClusterManager {
     final textPainter = TextPainter(
       textDirection: TextDirection.ltr,
     );
-    const double size = 100.0;
+
+    // Use the configurable clusterMarkerSize
+    final double size = clusterMarkerSize;
 
     // Draw shape
     final shape = clusterShape.getOuterPath(

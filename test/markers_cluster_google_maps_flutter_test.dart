@@ -64,6 +64,19 @@ void main() {
       LatLng(34.0195, 71.5651)
     ];
 
+    // Coordinates for Quetta
+    List<LatLng> quettaCoordinates = [
+      LatLng(30.1798, 66.9750),
+      LatLng(30.1916, 66.9904),
+      LatLng(30.1738, 67.0040),
+      LatLng(30.1623, 67.0098),
+      LatLng(30.1425, 66.9978),
+      LatLng(30.1964, 66.9466),
+      LatLng(30.2092, 66.9212),
+      LatLng(30.2189, 66.8999),
+      LatLng(30.2362, 66.8741),
+      LatLng(30.2523, 66.9112)
+    ];
     // Add markers for Islamabad
     for (var i = 0; i < islamabadCoordinates.length; i++) {
       clusterManager.addMarker(Marker(
@@ -96,14 +109,21 @@ void main() {
           infoWindow: InfoWindow(title: 'Peshawar Marker $i')));
     }
 
+    // Add markers for Quetta
+    for (var i = 0; i < quettaCoordinates.length; i++) {
+      clusterManager.addMarker(Marker(
+          markerId: MarkerId('quetta_$i'),
+          position: quettaCoordinates[i],
+          infoWindow: InfoWindow(title: 'Quetta Marker $i')));
+    }
     // Update clusters at different zoom levels
     await clusterManager.updateClusters(zoomLevel: 15.0);
     final clusteredMarkersZoom15 = clusterManager.getClusteredMarkers();
-    expect(clusteredMarkersZoom15.length, 40);
+    expect(clusteredMarkersZoom15.length, 50);
 
     await clusterManager.updateClusters(zoomLevel: 14.0);
     final clusteredMarkersZoom10 = clusterManager.getClusteredMarkers();
-    expect(clusteredMarkersZoom10.length, 38);
+    expect(clusteredMarkersZoom10.length, 40);
 
     await clusterManager.updateClusters(zoomLevel: 4.0);
     final clusteredMarkersZoom5 = clusterManager.getClusteredMarkers();
