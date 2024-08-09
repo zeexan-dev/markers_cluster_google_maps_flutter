@@ -1,3 +1,10 @@
+## 0.1.0
+
+* clusterMarkerSize option added
+* Dependencies updated
+* Example updated
+* Example video added
+
 ## 0.0.7+1
 
 * Small Fix.
