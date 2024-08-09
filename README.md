@@ -5,9 +5,7 @@
 
 Package for clustering markers on Google Maps in Flutter applications.
 
-
-https://github.com/user-attachments/assets/ca692dec-cbce-4604-a0bb-bf29d0f0cb2c
-
+![markers_cluster](https://github.com/user-attachments/assets/40123179-1088-4577-8f1d-1ed3c3116668)
 
 ## Installation
 
