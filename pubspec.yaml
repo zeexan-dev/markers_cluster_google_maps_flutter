@@ -1,6 +1,6 @@
 name: markers_cluster_google_maps_flutter
 description: "Package for clustering markers on Google Maps in Flutter applications"
-version: 0.1.0+1
+version: 0.1.0+2
 homepage: https://github.com/zeexan-dev/markers_cluster_google_maps_flutter
 
 environment:
