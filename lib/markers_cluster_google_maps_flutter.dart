@@ -162,7 +162,7 @@ class MarkersClusterManager {
   Future<BitmapDescriptor> _createCustomClusterBitmap(int clusterSize) async {
     final pictureRecorder = ui.PictureRecorder();
     final canvas = Canvas(pictureRecorder);
-    final paint = Paint()..color = clusterColor.withOpacity(clusterOpacity);
+    final paint = Paint()..color = clusterColor.withValues(alpha: clusterOpacity);
     final borderPaint = Paint()
       ..color = clusterBorderColor
       ..strokeWidth = clusterBorderThickness
